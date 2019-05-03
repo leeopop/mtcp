@@ -8,7 +8,6 @@ endif
 CFLAGS = -I$(RTE_SDK)/$(RTE_TARGET)/include
 LDFLAGS = -L$(RTE_SDK)/$(RTE_TARGET)/lib
 
-MTCP_HDR_DIR=../include/mtcp
 
 include $(RTE_SDK)/mk/rte.vars.mk
 
@@ -17,8 +16,9 @@ CFLAGS += -Wall -fPIC -fgnu89-inline -Werror
 CFLAGS += -DNDEBUG -g -O3 -DNETSTAT -DINFO -DDBGERR -DDBGCERR
 
 CFLAGS += -I./include
-CFLAGS += -I../include/mtcp/util
 CFLAGS += -I../include/mtcp
+CFLAGS += -I../include/mtcp/internal
+CFLAGS += -I../include/mtcp/util
 
 ### SOURCE CODE ###
 SRCS = $(wildcard *.c)
