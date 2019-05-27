@@ -122,7 +122,7 @@ SBFree(sb_manager_t sbm, struct tcp_send_buffer *buf)
 size_t 
 SBPut(sb_manager_t sbm, struct tcp_send_buffer *buf, const void *data, size_t len)
 {
-	// Benchmark record: Avg cycle:  for server.
+	// Benchmark record: Avg cycle: 5014.119640 for server.
 	DO_MICROBENCH_WITH_NAME_INTERVAL("SBPut", 100000);
 	size_t to_put;
 
