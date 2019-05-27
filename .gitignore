@@ -1,3 +1,5 @@
+.vscode
+
 # mtcp-specific files
 Makefile
 autom4te.cache/
