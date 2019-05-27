@@ -294,7 +294,7 @@ RBPut(rb_manager_t rbm, struct tcp_ring_buffer* buff,
 	struct fragment_ctx* prev, *pprev;
 	int merged = 0;
 
-	// Benchmark record: Avg cycle:  for client, Avg cycle:  for server.
+	// Benchmark record: Avg cycle: 463.407800 for client.
 	DO_MICROBENCH_WITH_NAME_INTERVAL("RBPut", 100000);
 
 	if (len <= 0)

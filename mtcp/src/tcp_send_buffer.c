@@ -122,6 +122,8 @@ SBFree(sb_manager_t sbm, struct tcp_send_buffer *buf)
 size_t 
 SBPut(sb_manager_t sbm, struct tcp_send_buffer *buf, const void *data, size_t len)
 {
+	// Benchmark record: Avg cycle:  for server.
+	DO_MICROBENCH_WITH_NAME_INTERVAL("SBPut", 100000);
 	size_t to_put;
 
 	if (len <= 0)
@@ -147,6 +149,8 @@ SBPut(sb_manager_t sbm, struct tcp_send_buffer *buf, const void *data, size_t le
 	}
 	buf->len += to_put;
 	buf->cum_len += to_put;
+
+	END_MICROBENCH();
 
 	return to_put;
 }
