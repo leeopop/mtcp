@@ -1,6 +1,29 @@
 #ifndef MTCP_H
 #define MTCP_H
 
+#define ENABLE_MICROBENCH
+#define PRECISE_MICROBENCH
+#ifdef ENABLE_MICROBENCH
+#define CUSTOM_PRINT_INTERVAL 10000
+#include <R/microbench.h>
+#endif
+
+#ifndef DO_MICROBENCH
+#define DO_MICROBENCH()
+#endif
+
+#ifndef DO_MICROBENCH_WITH_INTERVAL
+#define DO_MICROBENCH_WITH_INTERVAL(interval)
+#endif
+
+#ifndef DO_MICROBENCH_WITH_NAME
+#define DO_MICROBENCH_WITH_NAME(name)
+#endif
+
+#ifndef DO_MICROBENCH_WITH_NAME_INTERVAL
+#define DO_MICROBENCH_WITH_NAME_INTERVAL(name, interval)
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
