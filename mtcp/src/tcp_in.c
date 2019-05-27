@@ -1189,6 +1189,7 @@ int
 ProcessTCPPacket(mtcp_manager_t mtcp, 
 		 uint32_t cur_ts, const int ifidx, const struct iphdr *iph, int ip_len)
 {
+	// Benchmark record: Avg cycle: 714.641280 for client, Avg cycle: 451.716840 for server.
 	DO_MICROBENCH_WITH_NAME_INTERVAL("ProcessTCPPacket", 100000);
 	struct tcphdr* tcph = (struct tcphdr *) ((u_char *)iph + (iph->ihl << 2));
 	uint8_t *payload    = (uint8_t *)tcph + (tcph->doff << 2);
