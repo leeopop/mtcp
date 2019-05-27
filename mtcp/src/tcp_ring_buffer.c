@@ -294,11 +294,14 @@ RBPut(rb_manager_t rbm, struct tcp_ring_buffer* buff,
 	struct fragment_ctx* prev, *pprev;
 	int merged = 0;
 
+	// Benchmark record: Avg cycle:  for client, Avg cycle:  for server.
+	DO_MICROBENCH_WITH_NAME_INTERVAL("RBPut", 100000);
+
 	if (len <= 0)
 		return 0;
 
 	// if data offset is smaller than head sequence, then drop
-	if (GetMinSeq(buff->head_seq, cur_seq) != buff->head_seq)
+	if (GetMinSeq(buff->head_seq, cur_seq) != buff->head_seq) 
 		return 0;
 
 	putx = cur_seq - buff->head_seq;
@@ -384,6 +387,8 @@ RBPut(rb_manager_t rbm, struct tcp_ring_buffer* buff,
 		buff->cum_len += buff->fctx->len - buff->merged_len;
 		buff->merged_len = buff->fctx->len;
 	}
+
+	END_MICROBENCH();
 	
 	return len;
 }
